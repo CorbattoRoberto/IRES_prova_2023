@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+import java.util.List;
+
 import static it.euris.javaacademy.teslabattery.utility.DataConversionUtils.numberToString;
 
 @Builder
@@ -33,6 +35,10 @@ public class Component implements Model {
     @Column(name = "danger")
     @Builder.Default()
     private Boolean danger = true;
+
+    @OneToMany(mappedBy = "component")
+    private List<FormulaComponent> formulaComponents;
+
 
     @Override
     public ComponentDTO toDto() {

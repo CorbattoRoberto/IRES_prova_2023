@@ -31,13 +31,6 @@ public class Formula implements Model {
     @JoinColumn(name = "assembly_line_id")
     private AssemblyLine assemblyLine;
 
-    @ManyToMany
-    @JoinTable(
-            name = "battery_formula_components",
-            joinColumns = @JoinColumn(name = "formula_id"),
-            inverseJoinColumns = @JoinColumn(name = "component_id")
-    )
-    private List<Component> components;
 
     @OneToMany(mappedBy = "formula", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<ProductionCycle> productionCycles;
