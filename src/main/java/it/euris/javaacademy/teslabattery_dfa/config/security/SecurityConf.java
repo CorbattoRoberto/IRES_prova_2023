@@ -33,19 +33,15 @@ public class SecurityConf {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
-        //TODO aggiornare i requestmatchers dopo aver implementato i controller
-
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(whiteList.getUrls()).permitAll()
-                        .requestMatchers(HttpMethod.GET,"/").permitAll()
-                        .requestMatchers(HttpMethod.GET,"").permitAll()
-                        .requestMatchers("").hasRole(UserRole.SUPERVISOR.toString())
-                        .requestMatchers("").hasAnyRole(
-                                UserRole.SUPERVISOR.toString(),
-                                UserRole.VISITOR.toString())
+                        .requestMatchers(HttpMethod.GET).hasRole(UserRole.SUPERVISOR.toString())
+                        .requestMatchers(HttpMethod.POST).hasRole(UserRole.SUPERVISOR.toString())
+                        .requestMatchers(HttpMethod.PUT).hasRole(UserRole.SUPERVISOR.toString())
+                        .requestMatchers(HttpMethod.DELETE).hasRole(UserRole.SUPERVISOR.toString())
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults())
@@ -73,8 +69,13 @@ public class SecurityConf {
                 .password(passwordEncoder().encode("visitor"))
                 .roles(UserRole.VISITOR.toString())
                 .build();
+        UserDetails supervisor1 = User.builder()
+                .username("supervisor")
+                .password(passwordEncoder().encode("supervisor"))
+                .roles(UserRole.SUPERVISOR.toString())
+                .build();
 
-        return new InMemoryUserDetailsManager(supervisor, visitor);
+        return new InMemoryUserDetailsManager(supervisor, visitor, supervisor1);
     }
 
 

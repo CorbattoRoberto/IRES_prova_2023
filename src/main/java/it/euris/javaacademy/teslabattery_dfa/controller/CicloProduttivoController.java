@@ -1,12 +1,14 @@
 package it.euris.javaacademy.teslabattery_dfa.controller;
 
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import it.euris.javaacademy.teslabattery_dfa.data.dto.CicloProduttivoDTO;
 import it.euris.javaacademy.teslabattery_dfa.data.entity.CicloProduttivo;
 import it.euris.javaacademy.teslabattery_dfa.exception.IdMustBeNull;
 import it.euris.javaacademy.teslabattery_dfa.exception.IdMustNotBeNull;
 import it.euris.javaacademy.teslabattery_dfa.service.CicliProduttivoService;
 import it.euris.javaacademy.teslabattery_dfa.utility.DataConversionUtils;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
@@ -14,7 +16,10 @@ import org.springframework.web.server.ResponseStatusException;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+@AllArgsConstructor
+@RestController
+@RequestMapping("/cycles")
+@SecurityRequirement(name = "authentication")
 public class CicloProduttivoController {
 
     CicliProduttivoService cicliProduttivoService;
