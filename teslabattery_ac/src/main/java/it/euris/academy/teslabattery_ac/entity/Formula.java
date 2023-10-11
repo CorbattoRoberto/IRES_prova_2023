@@ -33,17 +33,19 @@ public class Formula implements Model {
     @Builder.Default
     private List<ComponentFormula> componentFormulas= new ArrayList<>();
 
-
+    // Questo campo non è corretto, per la definizione della relazione tra formula
+    // e componenti hai già creato l'entity ComponentFormula
     @Column(name="component_id")
     private Integer componentId;
 
+    ///////////////////////////////////////////////////////////////////////
+    // Questi due campi devono essere definiti nell'entity ComponentFormula
     @Column(name="quantity_of_component")
     private Integer quantityOfComponent;
 
-
     @Column(name="unit_of_measure_of_quantity")
     private String unitOfMeasureOfQuantity;
-
+    ///////////////////////////////////////////////////////////////////////
 
 
     @Override

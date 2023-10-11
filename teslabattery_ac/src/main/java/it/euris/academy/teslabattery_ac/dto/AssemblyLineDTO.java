@@ -19,6 +19,8 @@ public class AssemblyLineDTO implements Dto {
     private Integer id;
 
 
+    // I Dto non devono contenere riferimenti diretti alle entity
+    // Questa segnalazione vale per tutti i dto contenuti nel progetto
     private Formula formula;
 
 

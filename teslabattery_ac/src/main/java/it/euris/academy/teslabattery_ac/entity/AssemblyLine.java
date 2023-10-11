@@ -23,8 +23,17 @@ public class AssemblyLine implements Model {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @ManyToOne
-    @JoinColumn(name="formula_id", nullable=false)
+
+    // Relazione errata, il campo è stato definito come @ManyToOne (ciò impedisce la creazione della
+    // tabella) e la definizione del campo "formula_id" forma una foreign key non richiesta nelle
+    // specifiche.
+
+//    @ManyToOne
+//    @JoinColumn(name="formula_id", nullable=false)
+//    private Formula formula;
+
+    // Questa è l'indicazione corretta della dipendenza
+    @OneToOne(mappedBy="assemblyLine")
     private Formula formula;
 
     @Column(name = "name")

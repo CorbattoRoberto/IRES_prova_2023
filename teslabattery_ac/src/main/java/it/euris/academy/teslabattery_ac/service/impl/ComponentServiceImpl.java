@@ -5,9 +5,13 @@ import it.euris.academy.teslabattery_ac.exception.IdMustBeNullException;
 import it.euris.academy.teslabattery_ac.exception.IdMustNotBeNullException;
 import it.euris.academy.teslabattery_ac.repository.ComponentRepository;
 import it.euris.academy.teslabattery_ac.service.ComponentService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@AllArgsConstructor
 public class ComponentServiceImpl implements ComponentService {
    ComponentRepository componentRepository;
     @Override

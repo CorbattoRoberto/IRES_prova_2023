@@ -38,6 +38,11 @@ public class ProductionCycle implements Model {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
+    // Dipendenza verso il Supervisor mancante
+    @ManyToOne
+    @JoinColumn(name = "supervisor_id")
+    private Supervisor supervisorId;
+
     @Override
     public Dto toDto() {
         return null;

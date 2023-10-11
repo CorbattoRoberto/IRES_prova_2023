@@ -5,9 +5,13 @@ import it.euris.academy.teslabattery_ac.exception.IdMustBeNullException;
 import it.euris.academy.teslabattery_ac.exception.IdMustNotBeNullException;
 import it.euris.academy.teslabattery_ac.repository.FormulaRepository;
 import it.euris.academy.teslabattery_ac.service.FormulaService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@AllArgsConstructor
+@Service
 public class FormulaServiceImpl implements FormulaService {
     FormulaRepository formulaRepository;
     @Override

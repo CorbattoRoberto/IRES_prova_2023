@@ -22,10 +22,20 @@ public class Supervisor implements Model {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @OneToMany(mappedBy = "id")
+    // Dipèendenza errata, fa riferimento alla primary key del ProductionCycle e non al campo di tipo
+    // Supervisor, che deve definire la foreign key.
+
+//    @OneToMany(mappedBy = "id")
+//    @JsonIgnore
+//    @Builder.Default
+//    private List<ProductionCycle> productionCycles = new ArrayList<>();
+
+    // Ecco la definizione corretta
+    @OneToMany(mappedBy = "supervisorId")
     @JsonIgnore
     @Builder.Default
     private List<ProductionCycle> productionCycles = new ArrayList<>();
+
 
     @Builder.Default
     @Column(name = "locked_cycle")

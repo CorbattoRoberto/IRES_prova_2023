@@ -5,9 +5,13 @@ import it.euris.academy.teslabattery_ac.exception.IdMustBeNullException;
 import it.euris.academy.teslabattery_ac.exception.IdMustNotBeNullException;
 import it.euris.academy.teslabattery_ac.repository.AssemblyLineRepository;
 import it.euris.academy.teslabattery_ac.service.AssemblyLineService;
+import lombok.AllArgsConstructor;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
+@AllArgsConstructor
 public class AssemblyLineServiceImpl implements AssemblyLineService {
    AssemblyLineRepository assemblyLineRepository;
     @Override
