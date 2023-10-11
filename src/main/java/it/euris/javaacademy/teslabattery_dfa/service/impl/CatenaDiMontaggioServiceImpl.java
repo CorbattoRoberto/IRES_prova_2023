@@ -36,6 +36,11 @@ public class CatenaDiMontaggioServiceImpl implements CatenaDiMontaggioService {
     }
 
     @Override
+    public CatenaDiMontaggio findById(Integer id) {
+        return catenaDiMontaggioRepository.findById(id).orElse(CatenaDiMontaggio.builder().build());
+    }
+
+    @Override
     public Boolean deleteById(Integer id) {
         catenaDiMontaggioRepository.deleteById(id);
         return catenaDiMontaggioRepository.findById(id).isEmpty();

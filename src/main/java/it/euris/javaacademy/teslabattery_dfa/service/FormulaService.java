@@ -11,6 +11,7 @@ public interface FormulaService {
     Formula insert(Formula formula);
 
     Formula update(Formula formula);
+    Formula findById(Integer id);
 
     Boolean deleteById(Integer id);
 

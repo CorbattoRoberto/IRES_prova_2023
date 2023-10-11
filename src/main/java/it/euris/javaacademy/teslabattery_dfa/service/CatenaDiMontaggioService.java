@@ -10,6 +10,7 @@ public interface CatenaDiMontaggioService {
     CatenaDiMontaggio insert(CatenaDiMontaggio catena);
 
     CatenaDiMontaggio update(CatenaDiMontaggio catena);
+    CatenaDiMontaggio findById(Integer id);
 
     Boolean deleteById(Integer id);
 

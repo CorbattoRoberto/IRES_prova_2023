@@ -35,6 +35,11 @@ public class CicliProduttivoServiceImpl implements CicliProduttivoService {
     }
 
     @Override
+    public CicloProduttivo findById(Integer id) {
+        return cicloProduttivoRepository.findById(id).orElse(CicloProduttivo.builder().build());
+    }
+
+    @Override
     public Boolean deleteById(Integer id) {
         cicloProduttivoRepository.deleteById(id);
         return cicloProduttivoRepository.findById(id).isEmpty();
@@ -44,7 +49,7 @@ public class CicliProduttivoServiceImpl implements CicliProduttivoService {
 
     @Override
     public CicliCountProjection getCount() {
-        return null;
+        return cicloProduttivoRepository.getCount();
     }
 
 

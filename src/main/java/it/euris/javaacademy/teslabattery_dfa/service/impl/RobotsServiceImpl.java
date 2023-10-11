@@ -34,6 +34,11 @@ public class RobotsServiceImpl implements RobotsService {
     }
 
     @Override
+    public Robots findById(Integer id) {
+        return robotsRepository.findById(id).orElse(Robots.builder().build());
+    }
+
+    @Override
     public Boolean deleteById(Integer id) {
         robotsRepository.deleteById(id);
         return robotsRepository.findById(id).isEmpty();

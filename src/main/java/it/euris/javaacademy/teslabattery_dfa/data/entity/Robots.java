@@ -17,9 +17,9 @@ public class Robots implements Model {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
     @ManyToOne
-    @MapsId("robotId")
-    @JoinColumn(name = "robotId")
+    @JoinColumn(name = "robots_id")
     private CatenaDiMontaggio catenaDiMontaggio;
 
     @Column(name = "robotName")

@@ -35,6 +35,12 @@ public class ComponenteServiceImpl implements ComponenteService {
     }
 
     @Override
+    public Componente findById(Integer id) {
+        return componenteRepository.findById(id).orElse(Componente.builder().build()
+        );
+    }
+
+    @Override
     public Boolean deleteById(Integer id) {
         componenteRepository.deleteById(id);
         return componenteRepository.findById(id).isEmpty();

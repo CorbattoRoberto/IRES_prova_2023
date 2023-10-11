@@ -10,6 +10,7 @@ public interface RobotsService {
     Robots insert( Robots robots);
 
     Robots update( Robots robots);
+    Robots findById(Integer id);
 
     Boolean deleteById(Integer id);
 }

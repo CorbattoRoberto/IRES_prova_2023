@@ -35,6 +35,11 @@ public class FormulaServiceImpl implements FormulaService {
     }
 
     @Override
+    public Formula findById(Integer id) {
+        return formulaRepository.findById(id).orElse(Formula.builder().build());
+    }
+
+    @Override
     public Boolean deleteById(Integer id) {
         formulaRepository.deleteById(id);
         return formulaRepository.findById(id).isEmpty();

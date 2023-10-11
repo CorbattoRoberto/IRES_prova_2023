@@ -11,6 +11,7 @@ public interface CicliProduttivoService {
     CicloProduttivo insert(CicloProduttivo ciclo);
 
     CicloProduttivo update(CicloProduttivo ciclo);
+    CicloProduttivo findById(Integer id);
 
     Boolean deleteById(Integer id);
 

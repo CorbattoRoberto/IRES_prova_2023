@@ -10,6 +10,7 @@ public interface ComponenteService {
     Componente insert(Componente componente);
 
     Componente update(Componente componente);
+    Componente findById(Integer id);
 
     Boolean deleteById(Integer id);
 }
