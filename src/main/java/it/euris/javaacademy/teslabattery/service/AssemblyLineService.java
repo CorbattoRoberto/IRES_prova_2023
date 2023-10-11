@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface AssemblyLineService {
 
-    List<AssemblyLine> getAllAssemblyLines();
+    List<AssemblyLine> findAll();
 
     AssemblyLine insert(AssemblyLine assemblyLine);
 

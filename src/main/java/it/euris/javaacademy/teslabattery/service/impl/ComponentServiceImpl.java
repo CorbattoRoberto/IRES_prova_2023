@@ -19,7 +19,7 @@ public class ComponentServiceImpl implements ComponentService {
     ComponentRepository componentRepository;
 
     @Override
-    public List<Component> getAllComponents() {
+    public List<Component> findAll() {
         return componentRepository.findAll();
     }
 

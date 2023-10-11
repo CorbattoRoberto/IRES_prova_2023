@@ -19,7 +19,7 @@ public class ProductionCycleServiceImpl implements ProductionCycleService {
     ProductionCycleRepository productionCycleRepository;
 
     @Override
-    public List<ProductionCycle> getAll() {
+    public List<ProductionCycle> findAll() {
         return productionCycleRepository.findAll();
     }
 

@@ -43,12 +43,18 @@ public class SecurityConf {
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)
                 .authorizeHttpRequests((authorize) -> authorize
                         .requestMatchers(whiteList.getUrls()).permitAll()
-                        .requestMatchers(HttpMethod.GET, "/").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/customers/**").permitAll()
-                        .requestMatchers("/customers/**").hasRole(UserRole.ADMINISTRATOR.toString())
-                        .requestMatchers("/orders/**").hasAnyRole(
-                                UserRole.ADMINISTRATOR.toString(),
-                                UserRole.USER.toString())
+                        .requestMatchers(HttpMethod.GET, "/alive").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/assembly-lines/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/components/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/formula-components/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/robots/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/supervisors/**").permitAll()
+                        .requestMatchers("/assembly-lines/**").hasRole(UserRole.ADMINISTRATOR.toString())
+                        .requestMatchers("/components/**").hasRole(UserRole.ADMINISTRATOR.toString())
+                        .requestMatchers("/formula-components/**").hasRole(UserRole.ADMINISTRATOR.toString())
+                        .requestMatchers("/production-cycles/**").hasRole(UserRole.ADMINISTRATOR.toString())
+                        .requestMatchers("/robots/**").hasRole(UserRole.ADMINISTRATOR.toString())
+                        .requestMatchers("/supervisors/**").hasRole(UserRole.ADMINISTRATOR.toString())
                         .anyRequest().authenticated()
                 )
                 .httpBasic(withDefaults())
@@ -67,14 +73,14 @@ public class SecurityConf {
                 .build();
 
         UserDetails admin = User.builder()
-                .username("academy")
-                .password(passwordEncoder().encode("academy"))
+                .username("administrator")
+                .password(passwordEncoder().encode("administrator"))
                 .roles(UserRole.ADMINISTRATOR.toString())
                 .build();
 
         UserDetails viewer = User.builder()
-                .username("visitor")
-                .password(passwordEncoder().encode("visitor"))
+                .username("viewer")
+                .password(passwordEncoder().encode("viewer"))
                 .roles(UserRole.VIEWER.toString())
                 .build();
 

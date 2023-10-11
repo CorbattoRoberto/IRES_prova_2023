@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface RobotService {
 
-    List<Robot> getAll();
+    List<Robot> findAll();
 
     Robot insert(Robot robot);
 

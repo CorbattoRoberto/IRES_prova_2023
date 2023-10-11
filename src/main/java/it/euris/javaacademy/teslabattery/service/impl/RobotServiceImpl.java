@@ -19,7 +19,7 @@ public class RobotServiceImpl implements RobotService {
     RobotRepository robotRepository;
 
     @Override
-    public List<Robot> getAll() {
+    public List<Robot> findAll() {
         return robotRepository.findAll();
     }
 

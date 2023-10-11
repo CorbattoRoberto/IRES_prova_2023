@@ -19,7 +19,7 @@ public class SupervisorServiceImpl implements SupervisorService {
     SupervisorRepository supervisorRepository;
 
     @Override
-    public List<Supervisor> getAll() {
+    public List<Supervisor> findAll() {
         return supervisorRepository.findAll();
     }
 

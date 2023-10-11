@@ -20,7 +20,7 @@ public class AssemblyLineServiceImpl implements AssemblyLineService {
     private AssemblyLineRepository assemblyLineRepository;
 
     @Override
-    public List<AssemblyLine> getAllAssemblyLines() {
+    public List<AssemblyLine> findAll() {
         return assemblyLineRepository.findAll();
     }
 

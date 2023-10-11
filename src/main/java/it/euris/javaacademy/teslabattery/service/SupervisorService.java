@@ -5,7 +5,7 @@ import it.euris.javaacademy.teslabattery.data.entity.Supervisor;
 import java.util.List;
 
 public interface SupervisorService {
-    List<Supervisor> getAll();
+    List<Supervisor> findAll();
 
     Supervisor insert(Supervisor supervisor);
 

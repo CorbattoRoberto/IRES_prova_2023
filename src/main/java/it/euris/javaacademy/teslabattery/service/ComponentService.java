@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ComponentService {
 
-    List<Component> getAllComponents();
+    List<Component> findAll();
 
     Component insert(Component component);
 

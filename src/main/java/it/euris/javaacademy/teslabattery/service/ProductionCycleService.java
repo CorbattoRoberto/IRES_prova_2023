@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface ProductionCycleService {
 
-    List<ProductionCycle> getAll();
+    List<ProductionCycle> findAll();
 
     ProductionCycle insert(ProductionCycle productionCycle);
 
