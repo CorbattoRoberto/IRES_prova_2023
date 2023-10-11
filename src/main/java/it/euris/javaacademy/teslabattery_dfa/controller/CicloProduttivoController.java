@@ -6,6 +6,7 @@ import it.euris.javaacademy.teslabattery_dfa.data.dto.CicloProduttivoDTO;
 import it.euris.javaacademy.teslabattery_dfa.data.entity.CicloProduttivo;
 import it.euris.javaacademy.teslabattery_dfa.exception.IdMustBeNull;
 import it.euris.javaacademy.teslabattery_dfa.exception.IdMustNotBeNull;
+import it.euris.javaacademy.teslabattery_dfa.repository.projection.CicliCountProjection;
 import it.euris.javaacademy.teslabattery_dfa.service.CicliProduttivoService;
 import it.euris.javaacademy.teslabattery_dfa.utility.DataConversionUtils;
 import lombok.AllArgsConstructor;
@@ -95,4 +96,10 @@ public class CicloProduttivoController {
     public CicloProduttivoDTO getCycleById(@PathVariable("id") Integer id) {
         return cicliProduttivoService.findById(id).toDto();
     }
+
+    @GetMapping("/v1/count")
+    public CicliCountProjection getCount() {
+        return cicliProduttivoService.getCount();
+    }
+
 }
