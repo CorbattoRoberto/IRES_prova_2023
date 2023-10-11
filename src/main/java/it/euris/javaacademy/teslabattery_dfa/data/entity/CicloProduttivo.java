@@ -1,5 +1,7 @@
 package it.euris.javaacademy.teslabattery_dfa.data.entity;
 
+import it.euris.javaacademy.teslabattery_dfa.data.dto.CicloProduttivoDTO;
+import it.euris.javaacademy.teslabattery_dfa.data.dto.archetype.Model;
 import it.euris.javaacademy.teslabattery_dfa.data.entity.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,7 +15,7 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "ciclo_produttivo")
-public class CicloProduttivo {
+public class CicloProduttivo implements Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -36,4 +38,15 @@ public class CicloProduttivo {
     @Column(name = "data_ultimo_status")
     LocalDateTime lastStatusUpdate;
 
+    @Override
+    public CicloProduttivoDTO toDto() {
+        return CicloProduttivoDTO.builder()
+                .id(id)
+                .catenaDiMontaggio(catenaDiMontaggio)
+                .dataFine(dataFine)
+                .dataInizio(dataInizio)
+                .status(status)
+                .lastStatusUpdate(lastStatusUpdate)
+                .build();
+    }
 }

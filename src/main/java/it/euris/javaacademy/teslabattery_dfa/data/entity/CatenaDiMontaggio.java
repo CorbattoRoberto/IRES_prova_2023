@@ -2,6 +2,8 @@ package it.euris.javaacademy.teslabattery_dfa.data.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import it.euris.javaacademy.teslabattery_dfa.data.dto.CatenaDiMontaggioDTO;
+import it.euris.javaacademy.teslabattery_dfa.data.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -15,7 +17,7 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "catena_di_montaggio")
-public class CatenaDiMontaggio {
+public class CatenaDiMontaggio implements Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +32,12 @@ public class CatenaDiMontaggio {
     @Builder.Default
     protected List<Robots> robots = new ArrayList<>();
 
+    @Override
+    public CatenaDiMontaggioDTO toDto() {
+        return CatenaDiMontaggioDTO.builder()
+                .id(id)
+                .completionTimeInSeconds(completionTimeInSeconds)
+                .robots(robots)
+                .build();
+    }
 }

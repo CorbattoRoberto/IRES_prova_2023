@@ -1,5 +1,7 @@
 package it.euris.javaacademy.teslabattery_dfa.data.entity;
 
+import it.euris.javaacademy.teslabattery_dfa.data.dto.RobotsDTO;
+import it.euris.javaacademy.teslabattery_dfa.data.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -10,7 +12,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "robots")
-public class Robots {
+public class Robots implements Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -26,6 +28,15 @@ public class Robots {
     @Column(name = "position")
     private Integer position;
 
+    @Override
+    public RobotsDTO toDto() {
+        return RobotsDTO.builder()
+                .catenaDiMontaggio(catenaDiMontaggio)
+                .robotName(robotName)
+                .id(id)
+                .position(position)
+                .build();
+    }
 }
 
 

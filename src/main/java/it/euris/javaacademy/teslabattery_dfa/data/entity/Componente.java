@@ -1,5 +1,7 @@
 package it.euris.javaacademy.teslabattery_dfa.data.entity;
 
+import it.euris.javaacademy.teslabattery_dfa.data.dto.ComponenteDTO;
+import it.euris.javaacademy.teslabattery_dfa.data.dto.archetype.Model;
 import it.euris.javaacademy.teslabattery_dfa.data.entity.enums.ComponentName;
 import jakarta.persistence.*;
 import lombok.*;
@@ -11,7 +13,7 @@ import lombok.*;
 @AllArgsConstructor
 @Entity
 @Table(name = "componente")
-public class Componente {
+public class Componente implements Model {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,4 +25,13 @@ public class Componente {
 
     @Column(name = "dangerous" , nullable = false)
     protected Boolean isItDangerous;
+
+    @Override
+    public ComponenteDTO toDto() {
+        return ComponenteDTO.builder()
+                .id(id)
+                .componentName(componentName)
+                .isItDangerous(isItDangerous)
+                .build();
+    }
 }
