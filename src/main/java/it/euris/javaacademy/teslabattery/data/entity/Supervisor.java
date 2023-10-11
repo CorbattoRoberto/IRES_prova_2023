@@ -12,6 +12,7 @@ import static it.euris.javaacademy.teslabattery.utility.DataConversionUtils.numb
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@Entity
 @Table(name = "supervisor")
 public class Supervisor implements Model {
 

@@ -10,12 +10,12 @@ import java.util.List;
 import static it.euris.javaacademy.teslabattery.utility.DataConversionUtils.numberToString;
 
 
-@Builder
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "formula")
 public class Formula implements Model {
 
@@ -31,7 +31,6 @@ public class Formula implements Model {
     @JoinColumn(name = "assembly_line_id")
     private AssemblyLine assemblyLine;
 
-
     @ManyToMany
     @JoinTable(
             name = "battery_formula_components",
@@ -45,8 +44,7 @@ public class Formula implements Model {
 
     @Override
     public FormulaDTO toDto() {
-        return FormulaDTO
-                .builder()
+        return FormulaDTO.builder()
                 .id(numberToString(id))
                 .unitOfMeasurement(unitOfMeasurement)
                 .assemblyLineId(numberToString(assemblyLine.getId()))

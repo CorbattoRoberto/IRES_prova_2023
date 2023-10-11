@@ -16,6 +16,7 @@ import static it.euris.javaacademy.teslabattery.utility.DataConversionUtils.numb
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
+@Entity
 @Builder
 @Table(name = "production_cycle")
 public class ProductionCycle implements Model {
@@ -40,7 +41,6 @@ public class ProductionCycle implements Model {
     @Column(name = "status_date")
     private LocalDateTime statusDate;
 
-
     @Column(name = "end_time")
     private LocalDateTime endTime;
 
@@ -48,11 +48,13 @@ public class ProductionCycle implements Model {
     @JoinColumn(name = "supervisor_id")
     private Supervisor supervisor;
 
+    @ManyToOne
+    @JoinColumn(name = "formula_id")
+    private Formula formula;
 
     @Override
     public ProductionCycleDTO toDto() {
-        return ProductionCycleDTO
-                .builder()
+        return ProductionCycleDTO.builder()
                 .id(numberToString(id))
                 .assemblyLineId(numberToString(assemblyLine.getId()))
                 .startTime(localDateTimeToString(startTime))
