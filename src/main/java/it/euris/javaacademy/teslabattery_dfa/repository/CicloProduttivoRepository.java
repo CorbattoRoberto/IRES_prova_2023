@@ -10,9 +10,9 @@ public interface CicloProduttivoRepository extends JpaRepository<CicloProduttivo
     @Query(
             value =
                     "SELECT COUNT(a.id) as countAll, "
-                            + " SUM(CASE WHEN a.deleted=0 THEN 1 ELSE 0 END) as countOk, "
-                            + " SUM(CASE WHEN a.deleted=1 THEN 1 ELSE 0 END) as countDeleted "
-                            + "   FROM product a",
+                            + " SUM(CASE WHEN a.status='COMPLETATO' THEN 1 ELSE 0 END) as completati, "
+                            + " SUM(CASE WHEN a.deleted='FALLITO' 1 ELSE 0 END) as fallito"
+                            + "   FROM ciclo_produttivo a",
             nativeQuery = true)
     CicliCountProjection getCount();
 
