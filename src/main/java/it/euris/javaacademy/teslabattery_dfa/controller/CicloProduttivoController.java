@@ -102,4 +102,10 @@ public class CicloProduttivoController {
         return cicliProduttivoService.getCount();
     }
 
+    @GetMapping("/v1/countPercentage")
+    public String getCountPercentage() {
+        Integer n = Math.toIntExact(cicliProduttivoService.getCount().getCompletati() / cicliProduttivoService.getCount().getCountAll());
+        return String.format("%.of", n*100)+"%";
+    }
+
 }
