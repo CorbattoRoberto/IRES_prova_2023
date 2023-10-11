@@ -1,50 +1,36 @@
-package it.euris.academy.teslabattery_ac.entity;
+package it.euris.academy.teslabattery_ac.dto;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import it.euris.academy.teslabattery_ac.dto.RobotDTO;
 import it.euris.academy.teslabattery_ac.dto.archetype.Dto;
 import it.euris.academy.teslabattery_ac.dto.archetype.Model;
+import it.euris.academy.teslabattery_ac.entity.AssemblyLineRobot;
+import it.euris.academy.teslabattery_ac.entity.Robot;
 import it.euris.academy.teslabattery_ac.enums.RobotRoleType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.ArrayList;
 import java.util.List;
-
-@Builder
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity
-@Table(name = "robot")
-public class Robot implements Model {
+@Builder
+public class RobotDTO implements Dto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    @Column(name = "id", nullable = false)
     private Integer id;
 
-
-    @Column(name = "robot_role_type")
-    @Enumerated(EnumType.STRING)
     private RobotRoleType robotRoleType;
 
-    @Column(name = "location")
     private Integer location;
 
-    @Column(name = "characteristics")
     private String characteristics;
-    @OneToMany(mappedBy = "robot", fetch = FetchType.EAGER)
-    @JsonIgnore
-    @Builder.Default
-    private List<AssemblyLineRobot> assemblyLineRobots = new ArrayList<>();
-
 
     @Override
-    public RobotDTO toDto() {
-
-        return RobotDTO
+    public Robot toModel() {
+        return Robot
                 .builder()
                 .id(id)
                 .robotRoleType(robotRoleType)

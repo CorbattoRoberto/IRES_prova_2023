@@ -11,10 +11,10 @@ import java.io.Serializable;
 @AllArgsConstructor
 @Data
 @Embeddable
-public class FormulaKey implements Serializable {
-    @Column(name="assembly_line-id")
-    private Integer orderId;
-
+public class ComponentFormulaKey implements Serializable {
     @Column(name="component_id")
-    private Integer productId;
+    private Integer componentId;
+
+    @Column(name="formula_id")
+    private Integer formulaId;
 }

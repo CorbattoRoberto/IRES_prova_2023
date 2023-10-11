@@ -1,5 +1,7 @@
 package it.euris.academy.teslabattery_ac.entity;
 
+import it.euris.academy.teslabattery_ac.dto.archetype.Dto;
+import it.euris.academy.teslabattery_ac.dto.archetype.Model;
 import it.euris.academy.teslabattery_ac.enums.StatusType;
 import jakarta.persistence.*;
 import lombok.*;
@@ -13,18 +15,18 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @Entity
 @Table(name = "product_cycle")
-public class ProductionCycle {
+public class ProductionCycle implements Model {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
 
     @OneToOne
     @JoinColumn(name = "assembly_line_id")
     private AssemblyLine assemblyLine;
 
     @Column(name = "start_date")
-    private LocalDateTime StartDate;
+    private LocalDateTime startDate;
 
     @Column(name = "status_type")
     @Enumerated(EnumType.STRING)
@@ -36,4 +38,8 @@ public class ProductionCycle {
     @Column(name = "end_date")
     private LocalDateTime endDate;
 
+    @Override
+    public Dto toDto() {
+        return null;
+    }
 }

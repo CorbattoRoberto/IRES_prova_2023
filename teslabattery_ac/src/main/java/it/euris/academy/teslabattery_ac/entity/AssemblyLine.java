@@ -1,5 +1,9 @@
 package it.euris.academy.teslabattery_ac.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import it.euris.academy.teslabattery_ac.dto.AssemblyLineDTO;
+import it.euris.academy.teslabattery_ac.dto.archetype.Dto;
+import it.euris.academy.teslabattery_ac.dto.archetype.Model;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -13,11 +17,15 @@ import java.util.List;
 @AllArgsConstructor
 @Entity
 @Table(name = "assembly_line")
-public class AssemblyLine {
+public class AssemblyLine implements Model {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
-    private Long id;
+    private Integer id;
+
+    @ManyToOne
+    @JoinColumn(name="formula_id", nullable=false)
+    private Formula formula;
 
     @Column(name = "name")
     private String name;
@@ -25,8 +33,22 @@ public class AssemblyLine {
     @Column(name = "duration")
     private Long duration;
 
+    @OneToMany(mappedBy = "assemblyLine", fetch = FetchType.EAGER)
+    @JsonIgnore
     @Builder.Default
-    @OneToMany(mappedBy="id", fetch = FetchType.EAGER)
-    private List<Robot> robots = new ArrayList<>();
+    private List<AssemblyLineRobot> assemblyLineRobots= new ArrayList<>();
 
+
+
+    @Override
+    public AssemblyLineDTO toDto() {
+
+        return AssemblyLineDTO
+                .builder()
+                .id(id)
+                .duration(duration)
+                .formula(formula)
+                .name(name)
+                .build();
+    }
 }
