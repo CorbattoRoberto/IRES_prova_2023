@@ -38,6 +38,9 @@ public class CicloProduttivo implements Model {
     @Column(name = "data_ultimo_status")
     LocalDateTime lastStatusUpdate;
 
+    @Column(name = "supervisor")
+    String supervisor;
+
     @Override
     public CicloProduttivoDTO toDto() {
         return CicloProduttivoDTO.builder()
@@ -47,6 +50,7 @@ public class CicloProduttivo implements Model {
                 .dataInizio(dataInizio)
                 .status(status)
                 .lastStatusUpdate(lastStatusUpdate)
+                .supervisor(supervisor)
                 .build();
     }
 }

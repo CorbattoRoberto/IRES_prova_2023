@@ -24,6 +24,8 @@ public class CicloProduttivoDTO implements Dto {
     Status status;
 
     LocalDateTime lastStatusUpdate;
+
+    String supervisor;
     @Override
     public CicloProduttivo toModel() {
         return CicloProduttivo.builder()
@@ -32,6 +34,7 @@ public class CicloProduttivoDTO implements Dto {
                 .dataInizio(dataInizio)
                 .dataFine(dataFine)
                 .status(status)
+                .supervisor(supervisor)
                 .build();
     }
 }
