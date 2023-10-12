@@ -21,6 +21,8 @@ public class Formula implements Model {
     @Column(name = "id")
     private Integer id;
 
+    // Questi due campi devono trovarsi in DettagliFormula e non qui in Formula. Peraltro
+    // in DetagliFormula è correttamente presente già il campo numeroComponenti
     @Column(name="quantita_componenti")
     private Integer quantitaComponenti;
 

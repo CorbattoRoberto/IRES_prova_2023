@@ -20,6 +20,8 @@ public class DettagliFormula implements Model {
     @EmbeddedId
     private ChiaviDetagliFormula id;
 
+
+    // Questa relazione deve trovarsi nell'entity Formula
     @ManyToOne
     @MapsId("catenaDiMontaggio")
     @JoinColumn(name = "catena_di_montaggio_id")
