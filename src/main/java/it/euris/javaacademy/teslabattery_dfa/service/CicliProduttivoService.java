@@ -15,5 +15,5 @@ public interface CicliProduttivoService {
 
     Boolean deleteById(Integer id);
 
-    CicliCountProjection getCount();
+   List<CicliCountProjection> getCount();
 }

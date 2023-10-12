@@ -23,6 +23,8 @@ public class Formula implements Model {
     @Column(name = "id")
     private Integer id;
 
+    // Manca la relazione verso CatenaDiMontaggio
+
     @ElementCollection
     @CollectionTable(name = "ingredients", joinColumns = @JoinColumn(name = "formula_id"), foreignKey = @ForeignKey(name = "ingredients_fk"))
     private List<Ingredient> ingredients = new ArrayList<>();

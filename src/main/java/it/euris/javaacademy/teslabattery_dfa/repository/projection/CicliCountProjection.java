@@ -6,4 +6,6 @@ public interface CicliCountProjection {
     Integer getCompletati();
 
     Integer getFalliti();
+
+    Integer getMese();
 }

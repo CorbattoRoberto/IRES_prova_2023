@@ -48,7 +48,7 @@ public class CicliProduttivoServiceImpl implements CicliProduttivoService {
     //TODO implementare ogni mentodi di ciclicountprojection
 
     @Override
-    public CicliCountProjection getCount() {
+    public List<CicliCountProjection> getCount() {
         return cicloProduttivoRepository.getCount();
     }
 

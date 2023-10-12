@@ -32,12 +32,18 @@ public class CicloProduttivo implements Model {
     @Column(name = "data_fine")
     LocalDateTime dataFine;
 
+    // Se no nsi mette l'indicazione  @Enumerated(EnumType.STRING) allora il dato viene memorizzato
+    // come numero ordinale dell'enum (0, 1, 2, ecc..). Di conseguenza le query per le projection
+    // devono lavorare con i numeri e non con la rappresentazione in stringa del valore
+
     @Column(name = "status")
     Status status;
 
     @Column(name = "data_ultimo_status")
     LocalDateTime lastStatusUpdate;
 
+    // In questo caso l'ideale è avere una relazione OneToOne o meglio ancora ManyToOne
+    // verso un'entity Supervisor
     @Column(name = "supervisor")
     String supervisor;
 

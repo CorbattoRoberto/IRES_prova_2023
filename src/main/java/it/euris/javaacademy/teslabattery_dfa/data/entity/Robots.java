@@ -18,6 +18,11 @@ public class Robots implements Model {
     @Column(name = "id")
     private Integer id;
 
+
+    // La relazione è corretta. Il nome del campo deve fare riferimento all'entity relazionata
+    // es: catenadimontaggio_id
+    // In questo caso è conveniente usare una tabela intermedia con ua chiave
+    // composta catena di montaggio/robot
     @ManyToOne
     @JoinColumn(name = "robots_id")
     private CatenaDiMontaggio catenaDiMontaggio;

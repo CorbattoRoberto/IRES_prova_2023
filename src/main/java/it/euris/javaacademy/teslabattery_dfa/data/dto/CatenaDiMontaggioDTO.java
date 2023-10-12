@@ -18,7 +18,11 @@ public class CatenaDiMontaggioDTO implements Dto {
     private Integer id;
     public Integer completionTimeInSeconds;
 
+    // Vale per tutto i dto. Non devono essere presenti campi o relazioni con classi di tipo entity,
+    // ma solo tipi primitivi (anche boxed), stringhe, o in alternativa altre classi dto.
+
     protected List<Robots> robots = new ArrayList<>();
+
     @Override
     public CatenaDiMontaggio toModel() {
         return CatenaDiMontaggio.builder()
