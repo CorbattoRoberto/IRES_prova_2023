@@ -30,6 +30,10 @@ public class AssemblyLine implements Model {
     @Column(name = "production_time")
     private Integer productionTime;
 
+    // La relazione va bene, l'ideale in qeusto caso è quello di creare una tabella
+    // intermedia con chiave composta, come evidenziato nell'obiettivo massimo della fase 1
+    // ma in ogni caso anche così la dipendenza funziona
+
     @OneToMany(mappedBy = "assemblyLine", cascade = CascadeType.ALL)
     private List<Robot> robots;
 

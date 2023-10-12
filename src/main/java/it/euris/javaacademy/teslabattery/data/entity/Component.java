@@ -26,6 +26,7 @@ public class Component implements Model {
     @Column(name = "component_id")
     private Integer id;
 
+    // Campo non necessario, in quanto già presente in FormulaComponent
     @Column(name = "quantity", nullable = false)
     private Integer quantity;
 

@@ -38,6 +38,9 @@ public class SecurityConf {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
 
+        // Le specifiche indicano che tutti gli endpoint devono essere accessibili da utenti con
+        // ruolo SUPERVISOR, mentre qui i GET sono aperti a tutti
+
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .addFilterBefore(corsFilter, UsernamePasswordAuthenticationFilter.class)

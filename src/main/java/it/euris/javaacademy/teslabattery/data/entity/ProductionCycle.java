@@ -48,6 +48,8 @@ public class ProductionCycle implements Model {
     @JoinColumn(name = "supervisor_id")
     private Supervisor supervisor;
 
+    // Dipendenza non necessaria. Le specifiche parlano solo dell'associazione
+    // ProductCycle / AssemblyLine
     @ManyToOne
     @JoinColumn(name = "formula_id")
     private Formula formula;

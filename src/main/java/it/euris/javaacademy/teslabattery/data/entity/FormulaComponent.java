@@ -18,6 +18,9 @@ import static it.euris.javaacademy.teslabattery.utility.DataConversionUtils.numb
 @Table(name = "entity_component")
 public class FormulaComponent implements Model {
 
+    // In questo caso è indicato gestire la dipendenza tramite una embeddable class per
+    // avere una primary key composta da formula_id e component_id.
+    // In ogni caso anche impostata così la dipendenza fa il suo dovere.
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

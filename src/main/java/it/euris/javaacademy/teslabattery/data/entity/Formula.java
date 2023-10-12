@@ -24,6 +24,8 @@ public class Formula implements Model {
     @Column(name = "formula_id")
     private Integer id;
 
+    // Campo già correttamente presente nell'entity FormulaComponent
+
     @Column(name = "unit_of_measurement", nullable = false)
     private String unitOfMeasurement;
 
